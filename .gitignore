@@ -1,0 +1,6 @@
+WikiText2/
+__pycache__/
+model/
+papers/
+wandb-key.txt
+wandb/
