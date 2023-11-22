@@ -219,11 +219,11 @@ def normal_encoder(num_token_vocab):
   return NormalTransformer(num_token_vocab=num_token_vocab, embedding_dim=embedding_dim, nhead_encoder=nhead_encoder, num_decoder_layer=num_decoder_layer)
 
 def adptive_input_encoder(num_token_vocab):
-  embedding_dim = 512
+  embedding_dim = 1024
   nhead_encoder=8
   num_decoder_layer=8
   factor = 4
-  cutoff=[150, 1000, 3000]
+  cutoff=[1000, 3000]
 
   emb_dropout = 0.2
   encoder_dropout = 0.4
@@ -254,10 +254,14 @@ if __name__ == '__main__':
   nhead_encoder=8
   num_decoder_layer=6
 
-  vocab = WikiText2('train').vocab
-  # tr = normal_encoder(num_token_vocab=len(vocab))
-  # test(tr)
-  # get_parameters(tr)
+  ### vocab_len = len(WikiText2('train').vocab)
+  vocab_len = 28000
+
+  '''
+  tr = normal_encoder(num_token_vocab=vocab_len)
+  test(tr)
+  get_parameters(tr)
+  '''
 
   ai = AdaptiveInput(
         vocab_size = 100,
@@ -271,7 +275,7 @@ if __name__ == '__main__':
 
   print(ai(torch.tensor([1,2,3,40,50,78,80])).shape)
 
-  ait = adptive_input_encoder(num_token_vocab=len(vocab))
+  ait = adptive_input_encoder(num_token_vocab=vocab_len)
   test(ait)
   get_parameters(ait)
 

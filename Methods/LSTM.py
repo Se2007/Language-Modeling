@@ -170,8 +170,10 @@ if __name__ == '__main__':
    dropouth = 0.3
    dropouto = 0.4
 
-   vocab = WikiText2('train').vocab
-   model = LSTM(num_token_vocab=len(vocab), embedding_dim=embedding_dim,
+   ### vocab_len = len(WikiText2('train').vocab)
+   vocab_len = 28000
+
+   model = LSTM(num_token_vocab=vocab_len, embedding_dim=embedding_dim,
                       hidden_dim=hidden_dim, lstm_layer=num_layers,
                       dropoute=dropoute, dropouti=dropouti,
                       dropouth=dropouth, dropouto=dropouto)

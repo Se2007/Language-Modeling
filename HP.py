@@ -1,13 +1,13 @@
 from torch import optim
-import dataset
+from benchmark import dataset
 from utils import train_one_epoch
 from prettytable import PrettyTable
 from torch import nn
 from colorama import Fore, Style, init
 import torch
 
-import LSTM
-import Transformer
+from Methods import LSTM
+from Methods import Transformer
 
 def load(model, device='cpu', reset = False, load_path = None):
     model = model
@@ -29,7 +29,7 @@ device = 'cuda'
 train_loader  = dataset.WikiText2('train', mini=True)(batch_size=80, seq_len=70)
 vocab = dataset.WikiText2('train').vocab
 
-reset = False
+reset = True
 load_path = './model/Transformer/'+'TR4.475'+ ".pth"
 
 num_epochs = 5
