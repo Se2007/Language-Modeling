@@ -10,8 +10,7 @@ import math
 import numpy as np
 import  wandb
 import os
-import LSTM
-import Transformer
+from Methods import LSTM, Transformer
 import utils 
 
 key_file = './wandb-key.txt'
